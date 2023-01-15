@@ -14,10 +14,11 @@ class Point:
     def __add__(self, other: "Vector") -> "Point":
         return Point(self.x + other.x, self.y + other.y, self.z + other.z)
 
-    def __sub__(self, other: "Point | Vector") -> Union["Vector", "Point"]:
-        if isinstance(other, Point):
-            return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
+    def __sub__(self, other: "Point") -> "Vector":
+        return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
+    def subVector(self, other: "Vector") -> "Point":
+        """Subtract a vector from a point"""
         return Point(self.x - other.x, self.y - other.y, self.z - other.z)
 
     def __mul__(self, other: float) -> "Point":

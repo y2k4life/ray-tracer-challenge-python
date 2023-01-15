@@ -51,7 +51,7 @@ def test_subtracting_a_vector_from_a_point():
     """Subtracting a vector from a point (Chapter 1 page 6)"""
     p1 = Point(3, 2, 1)
     p2 = Vector(5, 6, 7)
-    assert p1 - p2 == Point(-2, -4, -6)
+    assert p1.subVector(p2) == Point(-2, -4, -6)
 
 
 def test_subtracting_two_vectors():
