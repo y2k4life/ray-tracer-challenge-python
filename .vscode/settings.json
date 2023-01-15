@@ -6,6 +6,7 @@
   "python.analysis.typeCheckingMode": "strict",
   "editor.insertSpaces": true,
   "editor.indentSize": 4,
+  "editor.tabSize": 4,
   "editor.formatOnSave":true,
   "python.linting.lintOnSave": true,
   "python.linting.pylintEnabled": true,
