@@ -23,6 +23,10 @@ From *working directory* build Python 3.11+ environment:
 ```
 python3.11 -m venv .venv
 ```
+Activate environment
+```
+source .venv/bin/activate
+```
 Install packages
 ```
 pip install -e .
