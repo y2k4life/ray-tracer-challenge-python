@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyray"
+description = 'Ray Tracer Challenge'
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = []
+authors = [
+  { name = "Guy" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "flake8",
+  "autopep8",
+  "pylint",
+  "pytest"]
+version = "0.0.1"
