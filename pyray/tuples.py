@@ -1,30 +1,31 @@
+from dataclasses import dataclass
 import math
-from typing import Union
+from typing import Self
 from pyray.raymath import fequal
 
 
+@dataclass(frozen=True, slots=True)
 class Point:
     """A particular position in space"""
 
-    def __init__(self, x: float, y: float, z: float) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
+    x: float
+    y: float
+    z: float
 
-    def __add__(self, other: "Vector") -> "Point":
+    def __add__(self, other: 'Vector') -> Self:
         return Point(self.x + other.x, self.y + other.y, self.z + other.z)
 
-    def __sub__(self, other: "Point") -> "Vector":
+    def __sub__(self, other: Self) -> 'Vector':
         return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def subVector(self, other: "Vector") -> "Point":
+    def subVector(self, other: 'Vector') -> Self:
         """Subtract a vector from a point"""
         return Point(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def __mul__(self, other: float) -> "Point":
+    def __mul__(self, other: float) -> Self:
         return Point(self.x * other, self.y * other, self.z * other)
 
-    def __truediv__(self, other: float) -> "Point":
+    def __truediv__(self, other: float) -> Self:
         return Point(self.x / other, self.y / other, self.z / other)
 
     def __eq__(self, other: object) -> bool:
@@ -35,42 +36,42 @@ class Point:
         return False
 
 
+@dataclass(frozen=True, slots=True)
 class Vector:
     """A quantity having direction as well as magnitude, especially as
     determining the position of one point in space relative to another"""
 
-    def __init__(self, x: float, y: float, z: float) -> None:
-        self.x = x
-        self.y = y
-        self.z = z
+    x: float
+    y: float
+    z: float
 
     def magnitude(self) -> float:
         """Calculate the distance/length represented by a vector"""
         return math.sqrt((self.x * self.x) + (self.y * self.y) +
                          (self.z * self.z))
 
-    def normalized(self) -> "Vector":
+    def normalized(self) -> Self:
         """Convert a vector into a unit vector"""
         m = self.magnitude()
         return Vector(self.x / m, self.y / m, self.z / m)
 
-    def __add__(self, other: "Vector") -> "Vector":
+    def __add__(self, other: Self) -> Self:
         return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
 
     def addPoint(self, other: Point) -> Point:
         """Add point to vector"""
         return Point(self.x + other.x, self.y + other.y, self.z + other.z)
 
-    def __sub__(self, other: "Vector") -> "Vector":
+    def __sub__(self, other: Self) -> Self:
         return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def __mul__(self, other: float) -> "Vector":
+    def __mul__(self, other: float) -> Self:
         return Vector(self.x * other, self.y * other, self.z * other)
 
-    def __truediv__(self, other: float) -> "Vector":
+    def __truediv__(self, other: float) -> Self:
         return Vector(self.x / other, self.y / other, self.z / other)
 
-    def __neg__(self) -> "Vector":
+    def __neg__(self) -> Self:
         return Vector(-self.x, -self.y, -self.z)
 
     def __eq__(self, other: object) -> bool:
