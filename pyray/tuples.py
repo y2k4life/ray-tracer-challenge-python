@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import math
 from typing import Self
-from pyray.raymath import fequal
+from pyray.raymath import float_equal
 
 
 @dataclass(frozen=True, slots=True)
@@ -18,7 +18,7 @@ class Point:
     def __sub__(self, other: Self) -> 'Vector':
         return Vector(self.x - other.x, self.y - other.y, self.z - other.z)
 
-    def subVector(self, other: 'Vector') -> Self:
+    def sub_vector(self, other: 'Vector') -> Self:
         """Subtract a vector from a point"""
         return Point(self.x - other.x, self.y - other.y, self.z - other.z)
 
@@ -30,8 +30,8 @@ class Point:
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Point):
-            return fequal(self.x, other.x) & fequal(self.y, other.y) & fequal(
-                self.z, other.z)
+            return float_equal(self.x, other.x) & float_equal(
+                self.y, other.y) & float_equal(self.z, other.z)
 
         return False
 
@@ -50,7 +50,7 @@ class Vector:
         return math.sqrt((self.x * self.x) + (self.y * self.y) +
                          (self.z * self.z))
 
-    def normalized(self) -> Self:
+    def normalize(self) -> Self:
         """Convert a vector into a unit vector"""
         m = self.magnitude()
         return Vector(self.x / m, self.y / m, self.z / m)
@@ -58,7 +58,7 @@ class Vector:
     def __add__(self, other: Self) -> Self:
         return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
 
-    def addPoint(self, other: Point) -> Point:
+    def add_point(self, other: Point) -> Point:
         """Add point to vector"""
         return Point(self.x + other.x, self.y + other.y, self.z + other.z)
 
@@ -76,8 +76,8 @@ class Vector:
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Vector):
-            return fequal(self.x, other.x) & fequal(
-                self.y, other.y) & fequal(self.z, other.z)
+            return float_equal(self.x, other.x) & float_equal(
+                self.y, other.y) & float_equal(self.z, other.z)
 
         return False
 
