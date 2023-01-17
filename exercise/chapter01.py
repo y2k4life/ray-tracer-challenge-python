@@ -19,12 +19,12 @@ class Environment:
 
 def tick(env: Environment, proj: Projectile) -> Projectile:
     """Move projectile"""
-    postision = proj.position + proj.velocity
+    position = proj.position + proj.velocity
     velocity = proj.velocity + env.gravity
-    return Projectile(postision, velocity)
+    return Projectile(position, velocity)
 
 
-p = Projectile(Point(0, 1, 0), Vector(1, 1, 0).normalized())
+p = Projectile(Point(0, 1, 0), Vector(1, 1, 0).normalize())
 e = Environment(Vector(0, -0.1, 0), Vector(-0.01, 0, 0))
 
 counter = 0

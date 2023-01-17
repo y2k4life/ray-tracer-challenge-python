@@ -29,7 +29,7 @@ def test_adding_a_point_to_a_vector():
     """Adding a point to a vector (Chapter 1 page 6)"""
     a = Point(3, -2, 5)
     b = Vector(-2, 3, 1)
-    assert b.addPoint(a) == Point(1, 1, 6)
+    assert b.add_point(a) == Point(1, 1, 6)
 
 
 def test_adding_two_vectors():
@@ -51,7 +51,7 @@ def test_subtracting_a_vector_from_a_point():
     """Subtracting a vector from a point (Chapter 1 page 6)"""
     p1 = Point(3, 2, 1)
     p2 = Vector(5, 6, 7)
-    assert p1.subVector(p2) == Point(-2, -4, -6)
+    assert p1.sub_vector(p2) == Point(-2, -4, -6)
 
 
 def test_subtracting_two_vectors():
@@ -131,13 +131,13 @@ def test_computing_the_magnitude_of_vector_1_2_3():
 def test_normalizing_vector_4_0_0_give_1_0_0():
     """Normalizing Vector(4, 0, 0) give Vector(1, 0, 0) (Chapter 1 page 10)"""
     v = Vector(4, 0, 0)
-    assert v.normalized() == Vector(1, 0, 0)
+    assert v.normalize() == Vector(1, 0, 0)
 
 
 def test_normalizing_vector_1_2_3():
     """Normalizing Vector(1, 2, 3) (Chapter 1 page 10)"""
     v = Vector(1, 2, 3)
-    n = v.normalized()
+    n = v.normalize()
     assert n == Vector(0.26726, 0.53452, 0.80178)
 
 
