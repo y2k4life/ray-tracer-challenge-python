@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Self
 from pyray.raymath import fequal
 
 
@@ -10,15 +11,15 @@ class Color:
     green: float
     blue: float
 
-    def __add__(self, other: "Color") -> Self:
+    def __add__(self, other: Self) -> Self:
         return Color(self.red + other.red, self.green + other.green,
                      self.blue + other.blue)
 
-    def __sub__(self, other: "Color") -> "Color":
+    def __sub__(self, other: Self) -> Self:
         return Color(self.red - other.red, self.green - other.green,
                      self.blue - other.blue)
 
-    def __mul__(self, other: object) -> "Color":
+    def __mul__(self, other: object) -> Self:
         if isinstance(other, Color):
             return Color(self.red * other.red, self.green * other.green,
                          self.blue * other.blue)
