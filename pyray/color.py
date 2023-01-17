@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Self
-from pyray.raymath import fequal
+from pyray.raymath import float_equal
 
 
 @dataclass(frozen=True, slots=True)
@@ -34,7 +34,7 @@ class Color:
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Color):
-            return fequal(self.red, other.red) & fequal(
-                self.green, other.green) & fequal(self.blue, other.blue)
+            return float_equal(self.red, other.red) & float_equal(
+                self.green, other.green) & float_equal(self.blue, other.blue)
 
         return False
