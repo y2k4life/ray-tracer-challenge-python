@@ -19,7 +19,7 @@ def test_create_vector():
 
 
 def test_adding_a_vector_to_a_point():
-    """Adding a vetor to a point (Chapter 1 page 6)"""
+    """Adding a vector to a point (Chapter 1 page 6)"""
     a = Point(3, -2, 5)
     b = Vector(-2, 3, 1)
     assert a + b == Point(1, 1, 6)
@@ -142,7 +142,7 @@ def test_normalizing_vector_1_2_3():
 
 
 def test_dot_product_of_two_vectors():
-    """The doct product of two tuples (Chapter 1 page 10)"""
+    """The dot product of two tuples (Chapter 1 page 10)"""
     a = Vector(1, 2, 3)
     b = Vector(2, 3, 4)
     assert dot(a, b) == 20
