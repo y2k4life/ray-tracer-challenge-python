@@ -8,3 +8,5 @@ from .tuples import dot
 from .color import Color
 
 from .canvas import Canvas
+
+from .matrix import Matrix
