@@ -5,8 +5,8 @@ from pyray import Color, Canvas
 class Projectile:
     """Projectile"""
 
-    def __init__(self, postiion: Point, velocity: Vector) -> None:
-        self.position = postiion
+    def __init__(self, position: Point, velocity: Vector) -> None:
+        self.position = position
         self.velocity = velocity
 
 
