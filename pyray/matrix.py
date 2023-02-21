@@ -44,10 +44,11 @@ class Matrix:
 
     def __str__(self) -> str:
         buffer = ''
+
         for row in range(0, 4):
             for col in range(0, 4):
-                buffer = buffer + f'{self[row][col]: 4.5f} '
-            buffer = buffer.strip() + '\n'
+                buffer = buffer + f' {self[row][col]:>12.5f}'
+            buffer = buffer.rstrip() + '\n'
         return buffer
 
     def __mul__(self, other: object) -> Self:

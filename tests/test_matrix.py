@@ -254,7 +254,8 @@ def test_testing_an_invertible_matrix_for_invertibility():
 
 
 def test_testing_an_non_invertible_matrix_for_invertibility():
-    """Testing an non-invertible matrix for invertibility (Chapter 3 page 39)"""
+    """Testing an non-invertible matrix for
+    invertibility (Chapter 3 page 39)"""
 
     A = Matrix(-4, 2, -2, -3,
                9, 6, 2, 6,
