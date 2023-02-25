@@ -1,7 +1,5 @@
-from pyray import Matrix
-from pyray.matrix import IDENTITY_MATRIX
+from pyray import IDENTITY_MATRIX, Matrix, Point
 from pyray.raymath import float_equal
-from pyray.tuples import Point
 
 
 def test_constructing_and_inspecting_a_4x4_matrix():
@@ -112,8 +110,8 @@ def test_multiplying_a_matrix_by_the_identity_matrix():
 
 
 def test_multiplying_the_identity_matrix_by_a_point():
-    """Multiplying the identity matrix by a
-    tuple (point) (Chapter 3 page 32)"""
+    """Multiplying the identity matrix by a tuple (point) (Chapter 3 page 32)
+    """
 
     a = Point(1, 2, 3)
 

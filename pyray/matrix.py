@@ -7,6 +7,7 @@ from pyray.tuples import Point, Vector
 
 class Matrix:
     """A data structure with 4 rows of 4 columns of floating point numbers.
+
     Regardless of a matrix size, for example a 3x3 matrix, the 4x4 matrix is
     used. This is for simplifications. Due to the computation expense the data
     form the inverse of the matrix is calculated when created. When an inverse
@@ -32,7 +33,7 @@ class Matrix:
             self.__invert_matrix__()
 
     def __eq__(self, other: object) -> bool:
-        """Check if this matrix equals another matrix"""
+        """Check if this matrix equals another matrix."""
 
         other_matrix = cast(Matrix, other)
         for row in range(0, 4):
@@ -44,6 +45,8 @@ class Matrix:
         return True
 
     def __getitem__(self, index: int) -> list[float]:
+        """Get a row with in the matrix."""
+
         return self.data[index]
 
     def __str__(self) -> str:
@@ -56,7 +59,7 @@ class Matrix:
         return buffer
 
     def __mul__(self, other: object) -> Self:
-        """Multiple matrix by another matrix"""
+        """Multiple matrix by another matrix."""
 
         other_matrix = cast(Matrix, other)
         m = Matrix(0, 0, 0, 0,
@@ -79,7 +82,7 @@ class Matrix:
         return m
 
     def mul_vector(self, vector: Vector) -> Vector:
-        """Multiple matrix by vector"""
+        """Multiple matrix by vector."""
 
         x = (self[0][0] * vector.x) + (self[0][1] * vector.y) + \
             (self[0][2] * vector.z) + (self[0][3] * 0.0)
@@ -91,7 +94,7 @@ class Matrix:
         return Vector(x, y, z)
 
     def mul_point(self, point: Point) -> Point:
-        """Multiple matrix by point"""
+        """Multiple matrix by point."""
 
         x = (self[0][0] * point.x) + (self[0][1] * point.y) + \
             (self[0][2] * point.z) + (self[0][3] * 1)
@@ -103,7 +106,9 @@ class Matrix:
         return Point(x, y, z)
 
     def transpose(self) -> Self:
-        """Turns a matrix rows into columns and the columns into rows"""
+        """Transposes the matrix.
+
+        Turn rows into columns and the columns into rows."""
 
         M = Matrix(0, 0, 0, 0,
                    0, 0, 0, 0,
@@ -118,9 +123,12 @@ class Matrix:
         return M
 
     def determinant(self, size: int = 4) -> float:
-        """Calculate the elements of a matrix of a give size to determine
-        whether or not the system has a solution. if the answer is 0 then
-        the system has no solution"""
+        """Calculate the determinant of a matrix.
+
+        The determinant is used to determine if a system
+        has a solution. if the calculated value is 0 then
+        system has no solution.
+        """
 
         det = 0
 
@@ -133,8 +141,11 @@ class Matrix:
         return det
 
     def sub_matrix(self, row: int, col: int) -> Self:
-        """Return a sub matrix where the row and column of the
-        given matrix are removed"""
+        """Return a sub matrix of the matrix.
+
+        Return a matrix of the matrix with the row and column of the
+        matrix removed.
+        """
 
         M = Matrix(0, 0, 0, 0,
                    0, 0, 0, 0,
@@ -158,7 +169,10 @@ class Matrix:
 
     def minor(self, row: int, col: int, size: int) -> float:
         """Calculate the minor of a matrix at row and column.
-        Which is the determinate of the sub matrix at row and column."""
+
+        The minor is the determinate of the sub matrix of the matrix
+        with the row and column.
+        """
 
         d = self.sub_matrix(row, col)
         return d.determinant(size - 1)
@@ -172,8 +186,10 @@ class Matrix:
         return minor
 
     def __invert_matrix__(self):
-        """Calculate the data for the inverse of the matrix if it can be 
-        calculated"""
+        """Calculate the data for the inverse of the matrix.
+
+        The inverse matrix is only calculated if can be calculated.
+        """
 
         d = self.determinant()
         if d != 0:
@@ -184,7 +200,11 @@ class Matrix:
                     self.__inverse[col][row] = c / d
 
     def inverse(self) -> Self:
-        """Create a matrix of the inverse data of the matrix"""
+        """Create and return a inverse matrix.
+
+        A matrix is create and return of the inverse data calculated
+        when the matrix was created.
+        """
 
         inverse = self.__inverse
         return Matrix(

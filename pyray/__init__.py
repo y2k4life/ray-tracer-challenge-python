@@ -9,4 +9,4 @@ from .color import Color
 
 from .canvas import Canvas
 
-from .matrix import Matrix
+from .matrix import Matrix, IDENTITY_MATRIX
